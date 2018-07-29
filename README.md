@@ -1,4 +1,4 @@
-# Log line parser - SmartPension Tech Assessment
+# Log line parser - SP Tech Assessment
 
 First clone the repo, or extract the git repo from the zip file I've provided.
 
