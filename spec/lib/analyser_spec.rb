@@ -17,7 +17,7 @@ describe Analyser do
   let(:scanner_klass) { double(:scanner_klass, new: mock_scanner) }
   let(:mock_scanner) { double(:scanner, each_entry: "") }
   let(:repo_klass) { double(:repo_klass, new: mock_repo) }
-  let(:mock_repo) { double(:repo, each_by_hits: []) }
+  let(:mock_repo) { double(:repo, each_by_hits: [], each_by_uniques: []) }
 
   subject(:analyser) {
     Analyser.new(

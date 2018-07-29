@@ -14,8 +14,14 @@ class Analyser
       repo.store(path, ip)
     end
 
+    output_stream.puts "Page paths ordered by hits:"
     repo.each_by_hits.each do |record|
       output_stream.puts "#{record[:path]} #{record[:hits]} visits"
+    end
+
+    output_stream.puts "\r\nPage paths ordered by uniques:"
+    repo.each_by_uniques.each do |record|
+      output_stream.puts "#{record[:path]} #{record[:uniques]} uniques"
     end
   end
 
