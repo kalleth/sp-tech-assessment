@@ -21,7 +21,7 @@ describe InMemoryRepository do
       it "returns a nested array of paths and their hits" do
         expect(repo.each_by_hits).to eq(
           [
-            ["/home", 3]
+            { path: "/home", hits: 3 }
           ]
         )
       end
@@ -41,9 +41,9 @@ describe InMemoryRepository do
       it "returns a sorted, nested array of paths and hits" do
         expect(repo.each_by_hits).to eq(
           [
-            ["/home", 3],
-            ["/welcome", 2],
-            ["/magicians", 1],
+            { path: "/home", hits: 3 },
+            { path: "/welcome", hits: 2 },
+            { path: "/magicians", hits: 1 },
           ]
         )
       end
