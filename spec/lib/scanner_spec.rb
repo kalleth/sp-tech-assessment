@@ -16,11 +16,11 @@ describe Scanner do
     }
 
     it "yields each line" do
-      expect { |b| scanner.each_line(&b) }.to yield_control.exactly(3).times
+      expect { |b| scanner.each_entry(&b) }.to yield_control.exactly(3).times
     end
 
     it "yields the path and IP correctly" do
-      expect { |b| scanner.each_line(&b) }.to yield_successive_args(
+      expect { |b| scanner.each_entry(&b) }.to yield_successive_args(
         ["/home", "184.123.665.067"],
         ["/home", "444.701.448.104"],
         ["/index", "444.701.448.104"],
