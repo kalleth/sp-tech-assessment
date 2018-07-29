@@ -40,10 +40,15 @@ describe Analyser do
 
   it "outputs the results to the output stream" do
     allow(mock_repo).to receive(:each_by_hits).and_return([
-      { path: "/path", hits: 3 },
+      { path: "/path", hits: 3, uniques: 3 },
+    ])
+
+    allow(mock_repo).to receive(:each_by_uniques).and_return([
+      { path: "/path", hits: 3, uniques: 1 },
     ])
 
     expect(output_stream).to receive(:puts).with("/path 3 visits")
+    expect(output_stream).to receive(:puts).with("/path 1 uniques")
 
     subject.call
   end
