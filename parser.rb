@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require_relative "lib/analyser"
+
 # Let's start off using the ruby ARGV array. It's not the most robust (optparse
 # or similar might work better) but for just providing a path to a file it's
 # adequate.
@@ -17,7 +19,7 @@ end
 file_path = ARGV[0]
 
 begin
-  file_handle = File.open(file_path) # "r" is the default file open mode
+  file_handle = File.open(file_path, "r") # "r" is the default file open mode
 rescue Errno::ENOENT
   # This error is raised mostly if the file doesn't exist
   STDERR.puts "file #{file_path} does not exist!"
@@ -25,3 +27,9 @@ rescue Errno::ENOENT
 end
 
 # Now we've got a file handle pointing to a valid file. Let's start some analysis...
+analyser = Analyser.new(
+  handle: file_handle,
+  output_stream: STDOUT,
+)
+
+analyser.call
